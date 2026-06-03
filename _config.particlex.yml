@@ -1,0 +1,135 @@
+# ParticleX theme configuration
+# https://github.com/theme-particlex/hexo-theme-particlex
+
+avatar: /images/avatar.jpg
+
+background:
+  - /images/background.jpg
+
+loading: /images/loading.gif
+
+colors:
+  - "#4f8cff"
+  - "#16a085"
+  - "#e67e22"
+  - "#c44569"
+  - "#6c5ce7"
+
+menu:
+  Home:
+    name: house
+    theme: solid
+    link: /
+  About:
+    name: id-card
+    theme: solid
+    link: /about
+  Archives:
+    name: box-archive
+    theme: solid
+    link: /archives
+  Categories:
+    name: bookmark
+    theme: solid
+    link: /categories
+  Tags:
+    name: tags
+    theme: solid
+    link: /tags
+
+card:
+  enable: true
+  description: |
+    物理、AI、coding。
+    偶尔写一点正在想的东西。
+  iconLinks:
+    GitHub:
+      name: github
+      theme: brands
+      link: https://github.com/CanonicaliTY
+  friendLinks:
+    CanonicaliTY: https://canonicality.top
+
+footer:
+  since: 2022
+  ICP:
+    enable: false
+    code:
+    link:
+
+polyfill:
+  enable: true
+  features:
+    - default
+
+highlight:
+  enable: true
+  style: github
+
+math:
+  enable: true
+
+preview:
+  enable: true
+
+crypto:
+  enable: false
+
+search:
+  enable: false
+
+giscus:
+  enable: false
+  src: https://giscus.app/client.js
+  repo:
+  repoID:
+  category:
+  categoryID:
+  mapping: pathname
+  strict: 0
+  reactionsEnabled: 1
+  emitMetadata: 0
+  inputPosition: bottom
+  theme: preferred_color_scheme
+  lang: zh-CN
+
+gitalk:
+  enable: false
+  clientID:
+  clientSecret:
+  repo:
+  owner:
+  admin:
+  language: zh-CN
+  proxy:
+
+waline:
+  enable: false
+  serverURL:
+  locale:
+  commentCount: true
+  pageview: false
+  emoji:
+    - https://unpkg.com/@waline/emojis@1.2.0/weibo
+    - https://unpkg.com/@waline/emojis@1.2.0/alus
+    - https://unpkg.com/@waline/emojis@1.2.0/bilibili
+    - https://unpkg.com/@waline/emojis@1.2.0/qq
+    - https://unpkg.com/@waline/emojis@1.2.0/tieba
+    - https://unpkg.com/@waline/emojis@1.2.0/tw-emoji
+  meta:
+    - nick
+    - mail
+    - link
+  requiredMeta:
+    - nick
+  lang: zh-CN
+  wordLimit: 0
+  login: enable
+  pageSize: 10
+
+twikoo:
+  enable: false
+  envID:
+  region:
+  path: location.pathname
+  lang: zh-CN

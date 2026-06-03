@@ -1,76 +1,74 @@
-# CanonicaliTY.github.io 项目整理
+# 柚葉月
 
-这是 `CanonicaliTY.github.io` 的 GitHub Pages 静态站点仓库，当前绑定域名为 `canonicality.top`。
+这是 `CanonicaliTY.github.io` 的 Hexo 博客源码仓库，站点域名为 `canonicality.top`。
 
-## 当前状态
+## 项目结构
 
-- Git 分支：`main`
-- 远端：`origin/main`
-- 工作区：干净，没有未提交改动
-- 站点生成器：页面标记显示为 `Hexo 8.1.1`
-- 主题：页脚显示为 `hexo-theme-particlex`
-- 当前仓库内容：已经生成好的静态文件
-- 当前缺失内容：没有 Hexo 源码项目文件，例如 `_config.yml`、`package.json`、`source/_posts`
+- `_config.yml`：Hexo 主配置
+- `_config.particlex.yml`：ParticleX 主题配置
+- `source/_posts/`：博客文章，平时主要改这里
+- `source/about/`：关于页面
+- `source/categories/`：分类页面
+- `source/tags/`：标签页面
+- `source/images/`：头像、背景图和加载图
+- `themes/particlex/`：ParticleX 主题
+- `.github/workflows/pages.yml`：GitHub Pages 自动发布流程
 
-## 当前页面
+## 本地使用
 
-- 首页：`index.html`
-- 文章页：`2026/01/20/hello-world/index.html`
-- 归档页：
-  - `archives/index.html`
-  - `archives/2026/index.html`
-  - `archives/2026/01/index.html`
-- 自定义域名：`CNAME`
-
-目前只有一篇默认文章 `Hello World`，内容仍是 Hexo 初始示例文章。
-
-## 资源和脚本
-
-- 样式：`css/main.css`
-- 主脚本：`js/main.js`
-- 主题脚本：`js/lib/*.js`
-- 图片：
-  - `images/avatar.jpg`
-  - `images/background.jpg`
-  - `images/loading.gif`
-
-## 已发现的问题
-
-导航菜单里有这些链接，但仓库里还没有对应页面：
-
-- `/about`
-- `/categories`
-- `/tags`
-
-如果继续用 Hexo，通常需要在源项目里创建这些页面后重新生成站点。
-
-## Git 历史简表
-
-- `2026-01-20 09:12:33`：首次创建占位文件
-- `2026-01-20 09:12:34`：生成并提交 Hexo 静态站点
-- `2026-01-20 10:34:41`：重新生成站点，更新首页、文章和归档页
-- `2026-01-20 10:36:12`：创建 `CNAME`
-- `2026-01-20 10:37:14`：把 `CNAME` 改成 `www.canonicality.top`
-- 当前最新提交：把 `CNAME` 改回 `canonicality.top`
-
-## 本地预览
-
-这个仓库当前不需要构建，可以直接启动静态服务器预览：
+安装依赖：
 
 ```bash
-python3 -m http.server 4000
+npm install
 ```
 
-然后打开：
+新建文章：
 
-```text
-http://localhost:4000
+```bash
+npm run new -- "文章标题"
 ```
 
-## 建议下一步
+本地预览：
 
-1. 找回或重建 Hexo 源项目：至少需要 `_config.yml`、`package.json`、`source/_posts`。
-2. 替换默认的 `Hello World` 文章。
-3. 创建 `about`、`categories`、`tags` 页面，或者先从菜单中移除这些链接。
-4. 确认自定义域名是否只使用 `canonicality.top`，还是同时配置 `www.canonicality.top`。
-5. 如果这个仓库只保留生成结果，可以另建一个源码仓库保存 Hexo 源文件。
+```bash
+npm run server
+```
+
+生成静态站点：
+
+```bash
+npm run build
+```
+
+生成结果会放在 `public/`，这个目录不提交到 Git。
+
+## 写文章
+
+文章放在 `source/_posts/`，使用 Markdown。示例：
+
+```md
+---
+title: 读量子力学某章的一点笔记
+date: 2026-06-03
+categories:
+  - Physics
+tags:
+  - quantum mechanics
+  - notes
+---
+
+正文内容……
+```
+
+建议的分类：
+
+- `Physics`
+- `AI`
+- `Coding`
+- `Notes`
+
+## 发布
+
+推送到 `main` 后，GitHub Actions 会运行 Hexo 构建，并把 `public/` 发布到 GitHub Pages。
+
+如果 GitHub Pages 还没有切到 Actions 发布，需要在仓库设置里把 Pages source 改成 GitHub Actions。
