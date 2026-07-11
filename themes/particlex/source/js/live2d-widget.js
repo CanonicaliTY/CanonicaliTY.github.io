@@ -1,6 +1,40 @@
 (() => {
-    if (window.matchMedia("(max-width: 719px)").matches) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!document.body.classList.contains("page-post")) return;
+    if (window.matchMedia("(max-width: 899px)").matches) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const supportsWebGL = () => {
+        try {
+            const canvas = document.createElement("canvas");
+            return Boolean(
+                window.WebGLRenderingContext &&
+                    (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")),
+            );
+        } catch (error) {
+            return false;
+        }
+    };
+
+    const showFallback = () => {
+        const fallback = document.createElement("div");
+        fallback.id = "live2d-fallback";
+        if (reducedMotion) fallback.classList.add("reduce-motion");
+
+        const image = document.createElement("img");
+        image.src = "/images/backgrounds/elaina-home-mobile.jpg";
+        image.alt = "Elaina";
+        image.decoding = "async";
+
+        fallback.appendChild(image);
+        document.body.appendChild(fallback);
+    };
+
+    if (!supportsWebGL()) {
+        showFallback();
+        return;
+    }
+
+    if (reducedMotion) return;
     if (navigator.connection && navigator.connection.saveData) return;
 
     const widgetBase = "https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.1/dist/";
@@ -51,7 +85,7 @@
                 #waifu-tool { right: 2px !important; top: 52px !important; z-index: 2 !important; }
                 #waifu-tool svg { fill: #66779c !important; height: 21px !important; }
                 #waifu-toggle { background-color: #5873a7 !important; bottom: 48px !important; z-index: 1002 !important; }
-                @media (max-width: 719px) { #waifu, #waifu-toggle { display: none !important; } }
+                @media (max-width: 899px) { #waifu, #waifu-toggle { display: none !important; } }
             `;
             document.head.appendChild(overrideStyle);
 

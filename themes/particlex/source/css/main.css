@@ -1571,6 +1571,44 @@ body #waifu-toggle {
     z-index: 1000;
 }
 
+#live2d-fallback {
+    animation: companion-float 4.5s ease-in-out infinite;
+    bottom: -10px;
+    height: 230px;
+    left: 6px;
+    pointer-events: none;
+    position: fixed;
+    transform-origin: bottom center;
+    width: 190px;
+    z-index: 1002;
+}
+
+#live2d-fallback img {
+    display: block;
+    height: 100%;
+    margin: 0;
+    max-width: none;
+    object-fit: cover;
+    object-position: 58% 30%;
+    width: 100%;
+    -webkit-mask-image: radial-gradient(ellipse 48% 50% at center, #000 72%, transparent 100%);
+    mask-image: radial-gradient(ellipse 48% 50% at center, #000 72%, transparent 100%);
+}
+
+#live2d-fallback.reduce-motion {
+    animation: none;
+}
+
+@keyframes companion-float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-0.5deg);
+    }
+    50% {
+        transform: translateY(-7px) rotate(0.5deg);
+    }
+}
+
 #loading-circle h2 {
     font-size: 18px;
     margin: 0 0 10px;
@@ -1678,9 +1716,10 @@ body #waifu-toggle {
     }
 }
 
-@media (max-width: 719px) {
+@media (max-width: 899px) {
     body #waifu,
-    body #waifu-toggle {
+    body #waifu-toggle,
+    #live2d-fallback {
         display: none !important;
     }
 }
