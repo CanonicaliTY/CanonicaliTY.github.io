@@ -4,6 +4,16 @@
     if (navigator.connection && navigator.connection.saveData) return;
 
     const widgetBase = "https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.1/dist/";
+
+    // Live2D uploads remote textures to WebGL, so Chrome requires CORS-enabled images.
+    const NativeImage = window.Image;
+    window.Image = function (...args) {
+        const image = new NativeImage(...args);
+        image.crossOrigin = "anonymous";
+        return image;
+    };
+    window.Image.prototype = NativeImage.prototype;
+
     const loadStylesheet = (url) =>
         new Promise((resolve, reject) => {
             const link = document.createElement("link");
@@ -33,26 +43,17 @@
 
             const overrideStyle = document.createElement("style");
             overrideStyle.textContent = `
-                #waifu { bottom: 0 !important; left: 8px !important; transform: translateY(12px) !important; z-index: 1002 !important; }
+                #waifu { bottom: 0 !important; isolation: isolate !important; left: 8px !important; transform: translateY(12px) !important; z-index: 1002 !important; }
                 #waifu:hover { transform: translateY(7px) !important; }
                 #waifu-tips { display: none !important; }
-                #live2d { display: block !important; height: 220px !important; visibility: visible !important; width: 220px !important; }
-                #waifu-tool { right: 2px !important; top: 52px !important; }
+                #waifu-canvas { position: relative !important; z-index: 1 !important; }
+                #live2d { background: transparent !important; display: block !important; height: 220px !important; opacity: 1 !important; position: relative !important; visibility: visible !important; width: 220px !important; z-index: 1 !important; }
+                #waifu-tool { right: 2px !important; top: 52px !important; z-index: 2 !important; }
                 #waifu-tool svg { fill: #66779c !important; height: 21px !important; }
                 #waifu-toggle { background-color: #5873a7 !important; bottom: 48px !important; z-index: 1002 !important; }
                 @media (max-width: 719px) { #waifu, #waifu-toggle { display: none !important; } }
             `;
             document.head.appendChild(overrideStyle);
-
-            const canvasObserver = new MutationObserver(() => {
-                const canvas = document.getElementById("live2d");
-                if (!canvas) return;
-                canvas.width = 440;
-                canvas.height = 440;
-                canvasObserver.disconnect();
-            });
-            canvasObserver.observe(document.body, { childList: true, subtree: true });
-            window.setTimeout(() => canvasObserver.disconnect(), 5000);
 
             window.initWidget({
                 waifuPath: `${window.location.origin}/live2d/waifu-tips.json`,
