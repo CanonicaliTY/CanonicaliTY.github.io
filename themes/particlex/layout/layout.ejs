@@ -51,6 +51,10 @@
         <% } %>
     </div>
     <script src="<%- url_for("/js/main.js") %>"></script>
+    <script src="<%- url_for("/js/site-effects.js") %>"></script>
+    <% if (theme.live2d && theme.live2d.enable) { %>
+    <script src="<%- url_for("/js/live2d-widget.js") %>"></script>
+    <% } %>
     <% if (type === "post" && page.comments) { %>
     <%- partial("comment") %>
     <% } %>

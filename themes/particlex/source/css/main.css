@@ -1005,6 +1005,8 @@ body {
     inset: 0;
     pointer-events: none;
     position: fixed;
+    transform: translateZ(0);
+    will-change: transform;
     z-index: -1;
 }
 
@@ -1014,12 +1016,17 @@ body {
 
 #menu,
 #menu.menu-color {
-    background: rgba(18, 19, 28, 0.74);
+    background: rgba(18, 19, 28, 0.92);
     border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-    box-shadow: 0 8px 28px rgba(11, 12, 18, 0.16);
+    box-shadow: 0 6px 20px rgba(11, 12, 18, 0.14);
     line-height: 58px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    transition: background 0.2s ease-out, transform 0.2s ease-out;
+    will-change: transform;
+}
+
+#menu.hidden {
+    top: 0;
+    transform: translateY(-100%);
 }
 
 #menu #desktop-menu {
@@ -1064,8 +1071,6 @@ body {
 
 #menu-curtain {
     background: rgba(8, 9, 14, 0.45);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
 }
 
 #home-head {
@@ -1168,19 +1173,17 @@ body {
 }
 
 #home-posts .post {
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.58);
     border-radius: 8px;
-    box-shadow: 0 18px 54px rgba(15, 16, 24, 0.2);
+    box-shadow: 0 14px 38px rgba(15, 16, 24, 0.18);
     box-sizing: border-box;
     margin-bottom: 28px;
     padding: 38px 42px 34px;
-    backdrop-filter: blur(18px) saturate(115%);
-    -webkit-backdrop-filter: blur(18px) saturate(115%);
 }
 
 #home-posts .post:hover {
-    box-shadow: 0 20px 60px rgba(15, 16, 24, 0.24);
+    box-shadow: 0 16px 42px rgba(15, 16, 24, 0.21);
     transform: translateY(-2px);
 }
 
@@ -1249,17 +1252,15 @@ body {
 
 .article,
 #archives {
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.58);
     border-radius: 8px;
-    box-shadow: 0 22px 64px rgba(15, 16, 24, 0.24);
+    box-shadow: 0 16px 44px rgba(15, 16, 24, 0.2);
     box-sizing: border-box;
     margin: 96px auto 0;
     max-width: 920px;
     padding: 52px 58px;
     width: calc(100% - 40px);
-    backdrop-filter: blur(18px) saturate(115%);
-    -webkit-backdrop-filter: blur(18px) saturate(115%);
 }
 
 .article > div:first-child h1 {
@@ -1475,8 +1476,83 @@ body {
     height: auto;
     padding: 26px 34px;
     width: auto;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+}
+
+.click-kaomoji {
+    animation: kaomoji-pop 900ms cubic-bezier(0.2, 0.75, 0.25, 1) forwards;
+    font-family: Inter, "Noto Sans JP", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    left: 0;
+    line-height: 1;
+    pointer-events: none;
+    position: fixed;
+    text-shadow: 0 1px 5px rgba(255, 255, 255, 0.92);
+    top: 0;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    white-space: nowrap;
+    z-index: 1200;
+}
+
+@keyframes kaomoji-pop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -35%) scale(0.78) rotate(0);
+    }
+    18% {
+        opacity: 1;
+        transform: translate(calc(-50% + var(--kaomoji-x)), -70%) scale(1) rotate(var(--kaomoji-rotate));
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--kaomoji-x)), -150%) scale(1.04) rotate(var(--kaomoji-rotate));
+    }
+}
+
+body #waifu {
+    transform: translateY(18px);
+    z-index: 1000;
+}
+
+body #waifu:hover {
+    transform: translateY(12px);
+}
+
+body #live2d {
+    height: 220px;
+    width: 220px;
+}
+
+body #waifu-tips {
+    background: rgba(250, 251, 255, 0.92);
+    border: 1px solid rgba(77, 91, 126, 0.22);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(15, 16, 24, 0.16);
+    color: #343744;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: -18px 16px;
+    min-height: 0;
+    padding: 8px 10px;
+    width: 184px;
+}
+
+body #waifu-tool {
+    right: 2px;
+    top: 52px;
+}
+
+body #waifu-tool svg {
+    fill: #66779c;
+    height: 21px;
+}
+
+body #waifu-toggle {
+    background-color: #5873a7;
+    bottom: 48px;
+    z-index: 1000;
 }
 
 #loading-circle h2 {
@@ -1522,6 +1598,7 @@ body {
     }
 
     #home-posts .post {
+        box-shadow: 0 10px 28px rgba(15, 16, 24, 0.16);
         margin-bottom: 18px;
         padding: 28px 22px 26px;
     }
@@ -1540,6 +1617,7 @@ body {
 
     .article,
     #archives {
+        box-shadow: 0 10px 30px rgba(15, 16, 24, 0.18);
         margin-top: 78px;
         padding: 30px 22px;
         width: calc(100% - 24px);
@@ -1571,5 +1649,29 @@ body {
 
     #footer {
         margin-top: 48px;
+    }
+}
+
+@media (max-width: 719px) {
+    body #waifu,
+    body #waifu-toggle {
+        display: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    #menu,
+    #home-posts .post,
+    #home-posts .post .go-post i,
+    #home-head #home-info .home-scroll i {
+        transition-duration: 0.01ms !important;
+    }
+
+    .click-kaomoji {
+        animation-duration: 450ms;
     }
 }

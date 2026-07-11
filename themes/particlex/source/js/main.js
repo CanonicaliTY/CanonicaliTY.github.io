@@ -7,6 +7,7 @@ const app = Vue.createApp({
             showMenuItems: false,
             menuColor: false,
             scrollTop: 0,
+            scrollFrame: 0,
             renderers: [],
         };
     },
@@ -16,23 +17,36 @@ const app = Vue.createApp({
         });
     },
     mounted() {
-        window.addEventListener("scroll", this.handleScroll, true);
+        window.addEventListener("scroll", this.requestScrollUpdate, { passive: true });
+        this.handleScroll();
         this.render();
+    },
+    beforeUnmount() {
+        window.removeEventListener("scroll", this.requestScrollUpdate);
+        if (this.scrollFrame) cancelAnimationFrame(this.scrollFrame);
     },
     methods: {
         render() {
             for (let i of this.renderers) i();
         },
+        requestScrollUpdate() {
+            if (this.scrollFrame) return;
+            this.scrollFrame = requestAnimationFrame(() => {
+                this.scrollFrame = 0;
+                this.handleScroll();
+            });
+        },
         handleScroll() {
             let wrap = this.$refs.homePostsWrap;
             let newScrollTop = document.documentElement.scrollTop;
-            if (this.scrollTop < newScrollTop) {
-                this.hiddenMenu = true;
-                this.showMenuItems = false;
-            } else this.hiddenMenu = false;
+            let shouldHideMenu = this.scrollTop < newScrollTop && newScrollTop > 58;
+            if (this.hiddenMenu !== shouldHideMenu) this.hiddenMenu = shouldHideMenu;
+            if (shouldHideMenu && this.showMenuItems) this.showMenuItems = false;
             if (wrap) {
-                if (newScrollTop <= window.innerHeight - 100) this.menuColor = true;
-                else this.menuColor = false;
+                let shouldUseTransparentMenu = newScrollTop <= window.innerHeight - 100;
+                if (this.menuColor !== shouldUseTransparentMenu) {
+                    this.menuColor = shouldUseTransparentMenu;
+                }
             }
             this.scrollTop = newScrollTop;
         },

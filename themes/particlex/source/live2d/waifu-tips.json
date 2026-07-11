@@ -1,0 +1,56 @@
+{
+  "mouseover": [
+    {
+      "selector": "#waifu-tool-switch-texture",
+      "text": ["A change of clothes?", "Let's try another look."]
+    },
+    {
+      "selector": "#waifu-tool-photo",
+      "text": ["Ready for a snapshot!", "Cheese! (≧▽≦)"]
+    },
+    {
+      "selector": "#waifu-tool-info",
+      "text": "This little widget comes from live2d-widget."
+    },
+    {
+      "selector": "#waifu-tool-quit",
+      "text": ["Taking a break?", "See you later!"]
+    },
+    {
+      "selector": "#desktop-menu a, #mobile-menu a",
+      "text": "Going to {text}?"
+    },
+    {
+      "selector": ".post-title, .article h1",
+      "text": "That looks worth reading."
+    },
+    {
+      "selector": ".article .content img",
+      "text": "A figure is often worth a page of notes."
+    }
+  ],
+  "click": [],
+  "seasons": [],
+  "time": [
+    { "hour": "6-11", "text": "Good morning. What are we learning today?" },
+    { "hour": "12-17", "text": "Good afternoon. Remember to look away from the screen sometimes." },
+    { "hour": "18-23", "text": "Good evening. A quiet hour is good for difficult ideas." },
+    { "hour": "0-5", "text": "Still awake? Leave a note for tomorrow and get some rest." }
+  ],
+  "message": {
+    "default": ["Take your time.", "One small note is still progress.", "Curiosity looks good on you."],
+    "console": "Looking under the hood? Have fun.",
+    "copy": "Saved for later.",
+    "visibilitychange": "Welcome back.",
+    "changeSuccess": "New look, same reading companion.",
+    "changeFail": "No other outfit is available for this model.",
+    "photo": "Snapshot ready.",
+    "goodbye": "See you next time.",
+    "hitokoto": "A line from $1, submitted by $2.",
+    "welcome": "Welcome to $1",
+    "referrer": "Hello, visitor from $1.",
+    "hoverBody": ["Hello there!", "That tickles.", "Need a study break?"],
+    "tapBody": ["You found me!", "(｡•̀ᴗ-)✧", "Back to the notes?"]
+  },
+  "models": []
+}

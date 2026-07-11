@@ -71,6 +71,9 @@ math:
 preview:
   enable: true
 
+live2d:
+  enable: true
+
 crypto:
   enable: false
 
