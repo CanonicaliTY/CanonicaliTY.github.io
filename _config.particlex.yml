@@ -38,10 +38,9 @@ menu:
     link: /tags
 
 card:
-  enable: true
+  enable: false
   description: |
-    物理、AI、coding。
-    偶尔写一点正在想的东西。
+    Physics, computation, and the occasional detour.
   iconLinks:
     GitHub:
       name: github
@@ -91,7 +90,7 @@ giscus:
   emitMetadata: 0
   inputPosition: bottom
   theme: preferred_color_scheme
-  lang: zh-CN
+  lang: en
 
 gitalk:
   enable: false
@@ -100,7 +99,7 @@ gitalk:
   repo:
   owner:
   admin:
-  language: zh-CN
+  language: en
   proxy:
 
 waline:
@@ -122,7 +121,7 @@ waline:
     - link
   requiredMeta:
     - nick
-  lang: zh-CN
+  lang: en
   wordLimit: 0
   login: enable
   pageSize: 10
@@ -132,4 +131,4 @@ twikoo:
   envID:
   region:
   path: location.pathname
-  lang: zh-CN
+  lang: en

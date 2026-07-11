@@ -2,19 +2,15 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            <%= theme.footer.since %> - <%= date(Date.now(), "YYYY") %> <%= config.title %>
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;<%= config.author %>
+            <%= theme.footer.since %> - <%= date(Date.now(), "YYYY") %> <%= config.author %>
         </div>
         <div>
-            Based on the <a href="https://hexo.io">Hexo Engine</a> &amp;
-            <a href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+            Built with <a href="https://hexo.io">Hexo</a> and a customised
+            <a href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX</a> theme.
         </div>
         <% if (theme.footer.ICP.enable) { %>
         <div>
-            备案号：
+            ICP registration:
             <% if (theme.footer.ICP.link) { %>
             <a href="<%- url_for(theme.footer.ICP.link) %>"><%= theme.footer.ICP.code %></a>
             <% } else { %>

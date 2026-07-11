@@ -30,7 +30,7 @@
     <div class="timeline">
         <div class="timeline-tail"></div>
         <div class="timeline-content">
-            <div class="item-time"><%= date(post.date, "YYYY/M/D") %></div>
+            <div class="item-time"><%= date(post.date, "MMM D, YYYY") %></div>
             <a href="<%- url_for(post.path) %>">
                 <h3><%= post.title %></h3>
             </a>

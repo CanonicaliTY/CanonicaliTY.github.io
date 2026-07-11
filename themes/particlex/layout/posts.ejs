@@ -28,7 +28,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            <%- date(post.date, "YYYY/M/D") %>
+            <%- date(post.date, "MMM D, YYYY") %>
         </span>
         <% if (theme.crypto.enable && typeof post.secret !== "undefined") { %>
         <span class="special">
@@ -70,6 +70,9 @@
         </span>
         <% }); %>
     </div>
-    <a href="<%- url_for(post.path) %>" class="go-post">阅读全文</a>
+    <a href="<%- url_for(post.path) %>" class="go-post">
+        Read article
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+    </a>
 </div>
 <% }); %>

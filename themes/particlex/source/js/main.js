@@ -33,8 +33,6 @@ const app = Vue.createApp({
             if (wrap) {
                 if (newScrollTop <= window.innerHeight - 100) this.menuColor = true;
                 else this.menuColor = false;
-                if (newScrollTop <= 400) wrap.style.top = "-" + newScrollTop / 5 + "px";
-                else wrap.style.top = "-80px";
             }
             this.scrollTop = newScrollTop;
         },

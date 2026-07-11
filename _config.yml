@@ -2,15 +2,15 @@
 # Docs: https://hexo.io/docs/configuration.html
 
 # Site
-title: 柚葉月
-subtitle: 青蓝の空 遥か彼方
-description: 物理、AI、coding，以及一些生活里的观察。
+title: 青藍の空 遥か彼方
+subtitle: Tingyu Chen
+description: Notes on physics, computation, and things worth remembering.
 keywords:
   - Physics
   - AI
   - Coding
 author: Tingyu Chen
-language: zh-CN
+language: en
 timezone: Europe/London
 
 # URL

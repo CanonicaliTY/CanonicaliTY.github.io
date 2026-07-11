@@ -1,54 +1,54 @@
-# 柚葉月
+# CanonicaliTY Blog
 
-这是 `CanonicaliTY.github.io` 的 Hexo 博客源码仓库，站点域名为 `canonicality.top`。
+Source repository for Tingyu Chen's Hexo blog at `canonicality.top`.
 
-## 项目结构
+## Structure
 
-- `_config.yml`：Hexo 主配置
-- `_config.particlex.yml`：ParticleX 主题配置
-- `source/_posts/`：博客文章，平时主要改这里
-- `source/about/`：关于页面
-- `source/categories/`：分类页面
-- `source/tags/`：标签页面
-- `source/images/`：头像、背景图和加载图
-- `themes/particlex/`：ParticleX 主题
-- `.github/workflows/pages.yml`：GitHub Pages 自动发布流程
+- `_config.yml`: main Hexo configuration
+- `_config.particlex.yml`: ParticleX theme configuration
+- `source/_posts/`: Markdown posts
+- `source/about/`: About page
+- `source/categories/`: category index
+- `source/tags/`: tag index
+- `source/images/`: site images
+- `themes/particlex/`: vendored and customised ParticleX theme
+- `.github/workflows/pages.yml`: GitHub Pages deployment workflow
 
-## 本地使用
+## Local development
 
-安装依赖：
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-新建文章：
+Create a post:
 
 ```bash
 npm run new -- "文章标题"
 ```
 
-本地预览：
+Run the local server:
 
 ```bash
 npm run server
 ```
 
-生成静态站点：
+Build the static site:
 
 ```bash
 npm run build
 ```
 
-生成结果会放在 `public/`，这个目录不提交到 Git。
+Generated files are written to `public/`, which is not committed.
 
-## 写文章
+## Writing
 
-文章放在 `source/_posts/`，使用 Markdown。示例：
+Posts live in `source/_posts/` and are written in Markdown:
 
 ```md
 ---
-title: 读量子力学某章的一点笔记
+title: Notes on a Chapter of Quantum Mechanics
 date: 2026-06-03
 categories:
   - Physics
@@ -57,18 +57,16 @@ tags:
   - notes
 ---
 
-正文内容……
+Post content...
 ```
 
-建议的分类：
+Current categories include:
 
 - `Physics`
 - `AI`
 - `Coding`
 - `Notes`
 
-## 发布
+## Deployment
 
-推送到 `main` 后，GitHub Actions 会运行 Hexo 构建，并把 `public/` 发布到 GitHub Pages。
-
-如果 GitHub Pages 还没有切到 Actions 发布，需要在仓库设置里把 Pages source 改成 GitHub Actions。
+Pushes to `main` trigger GitHub Actions, which builds the Hexo site and deploys `public/` to GitHub Pages. The repository's Pages source must be set to GitHub Actions.
