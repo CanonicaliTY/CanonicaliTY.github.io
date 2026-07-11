@@ -46,8 +46,9 @@ Generated files are written to `public/`, which is not committed.
 
 - `themes/particlex/source/js/site-effects.js` provides the click kaomoji animation.
 - `themes/particlex/source/js/live2d-widget.js` loads the Live2D widget after the page becomes idle.
-- `themes/particlex/source/live2d/waifu-tips.json` contains the local widget messages.
+- `themes/particlex/source/live2d/waifu-tips.json` pins the Shizuku pajama model; the text bubble is disabled.
 - Live2D can be disabled through `live2d.enable` in `_config.particlex.yml`.
+- Responsive Elaina backgrounds live in `source/images/backgrounds/`: separate images are used for the home page, posts, other pages, and narrow screens.
 
 The widget code is loaded from
 [`stevenjoezhang/live2d-widget`](https://github.com/stevenjoezhang/live2d-widget),

@@ -11,6 +11,10 @@
     if (is_category()) title = "Categories: " + page.category + " | " + config.title;
     if (is_tag()) title = "Tags: " + page.tag + " | " + config.title;
     if (is_archive()) title = "Archives | " + config.title;
+    let bodyClass = "page-listing";
+    if (is_home()) bodyClass = "page-home";
+    else if (is_post()) bodyClass = "page-post";
+    else if (is_page()) bodyClass = "page-page";
 %>
 <!DOCTYPE html>
 <html lang="<%- config.language %>">
@@ -27,7 +31,7 @@
     <link rel="icon" href="<%- url_for(theme.avatar) %>" />
     <%- partial("import", { type }) %>
 </head>
-<body>
+<body class="<%- bodyClass %>">
     <div id="layout">
         <transition name="fade">
             <div id="loading" v-show="loading">
@@ -50,10 +54,10 @@
         </transition>
         <% } %>
     </div>
-    <script src="<%- url_for("/js/main.js") %>"></script>
-    <script src="<%- url_for("/js/site-effects.js") %>"></script>
+    <script src="<%- url_for("/js/main.js") %>?v=<%- theme.asset_version %>"></script>
+    <script src="<%- url_for("/js/site-effects.js") %>?v=<%- theme.asset_version %>"></script>
     <% if (theme.live2d && theme.live2d.enable) { %>
-    <script src="<%- url_for("/js/live2d-widget.js") %>"></script>
+    <script src="<%- url_for("/js/live2d-widget.js") %>?v=<%- theme.asset_version %>"></script>
     <% } %>
     <% if (type === "post" && page.comments) { %>
     <%- partial("comment") %>

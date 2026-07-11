@@ -9,7 +9,7 @@
         "(づ｡◕‿‿◕｡)づ",
         "( ´ ▽ ` )ﾉ",
     ];
-    const colors = ["#d85d8b", "#5478b8", "#2f8f83", "#b06a42", "#7657a8"];
+    const colors = ["#d94f88", "#3f6fbd", "#16877b", "#a85a35", "#7650ad"];
     const maxEffects = 12;
 
     document.addEventListener(

@@ -4,7 +4,6 @@
     if (navigator.connection && navigator.connection.saveData) return;
 
     const widgetBase = "https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.1/dist/";
-
     const loadStylesheet = (url) =>
         new Promise((resolve, reject) => {
             const link = document.createElement("link");
@@ -32,18 +31,33 @@
                 loadModule(`${widgetBase}waifu-tips.js`),
             ]);
 
-            if (!localStorage.getItem("site-live2d-model-seeded")) {
-                localStorage.setItem("modelId", "4");
-                localStorage.setItem("modelTexturesId", "1");
-                localStorage.setItem("site-live2d-model-seeded", "true");
-            }
+            const overrideStyle = document.createElement("style");
+            overrideStyle.textContent = `
+                #waifu { bottom: 0 !important; left: 8px !important; transform: translateY(12px) !important; z-index: 1002 !important; }
+                #waifu:hover { transform: translateY(7px) !important; }
+                #waifu-tips { display: none !important; }
+                #live2d { display: block !important; height: 220px !important; visibility: visible !important; width: 220px !important; }
+                #waifu-tool { right: 2px !important; top: 52px !important; }
+                #waifu-tool svg { fill: #66779c !important; height: 21px !important; }
+                #waifu-toggle { background-color: #5873a7 !important; bottom: 48px !important; z-index: 1002 !important; }
+                @media (max-width: 719px) { #waifu, #waifu-toggle { display: none !important; } }
+            `;
+            document.head.appendChild(overrideStyle);
+
+            const canvasObserver = new MutationObserver(() => {
+                const canvas = document.getElementById("live2d");
+                if (!canvas) return;
+                canvas.width = 440;
+                canvas.height = 440;
+                canvasObserver.disconnect();
+            });
+            canvasObserver.observe(document.body, { childList: true, subtree: true });
+            window.setTimeout(() => canvasObserver.disconnect(), 5000);
 
             window.initWidget({
                 waifuPath: `${window.location.origin}/live2d/waifu-tips.json`,
-                cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/",
                 cubism2Path: `${widgetBase}live2d.min.js`,
-                modelId: 4,
-                tools: ["switch-texture", "photo", "info", "quit"],
+                tools: ["photo", "info", "quit"],
                 drag: false,
                 showToggleAfterQuit: true,
                 logLevel: "error",

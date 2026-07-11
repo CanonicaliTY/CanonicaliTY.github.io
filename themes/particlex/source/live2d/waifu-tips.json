@@ -52,5 +52,13 @@
     "hoverBody": ["Hello there!", "That tickles.", "Need a study break?"],
     "tapBody": ["You found me!", "(｡•̀ᴗ-)✧", "Back to the notes?"]
   },
-  "models": []
+  "models": [
+    {
+      "name": "Shizuku pajama",
+      "paths": [
+        "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/model/ShizukuTalk/shizuku-pajama/index.json"
+      ],
+      "message": ""
+    }
+  ]
 }

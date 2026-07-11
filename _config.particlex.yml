@@ -1,10 +1,12 @@
 # ParticleX theme configuration
 # https://github.com/theme-particlex/hexo-theme-particlex
 
+asset_version: "20260711-2"
+
 avatar: /images/avatar.jpg
 
 background:
-  - /images/background.jpg
+  - /images/backgrounds/elaina-home-desktop.jpg
 
 loading: /images/loading.gif
 
