@@ -1310,6 +1310,41 @@ body {
     margin: 18px 0;
 }
 
+.article .content figure {
+    margin: 34px auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+.article .content figure.figure-narrow {
+    max-width: 620px;
+}
+
+.article .content figure img {
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 4px;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.article .content figcaption {
+    color: #666976;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 10px auto 0;
+    max-width: 720px;
+    text-align: left;
+}
+
+.article .content .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
 .article .content a,
 #archives a,
 #home-posts a {
